@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Магазин одежды</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        .main-menu {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .main-menu button {
+            font-size: 1.2rem;
+            padding: 0.75rem 1.5rem;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .main-menu button:hover {
+            background-color: #45a049;
+        }
+
+        .categories {
+            display: none;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .categories h2 {
+            margin-bottom: 1rem;
+        }
+
+        .categories ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .categories ul li {
+            display: inline-block;
+            margin: 0.5rem;
+        }
+
+        .categories ul li a {
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            background-color: #ddd;
+            color: #333;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .categories ul li a:hover {
+            background-color: #bbb;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #666;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .back-button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Магазин одежды</h1>
+    </header>
+
+    <div id="main-screen" class="main-screen">
+        <div class="main-menu">
+            <button onclick="showCategories('Мужское')">Мужское</button>
+            <button onclick="showCategories('Женское')">Женское</button>
+        </div>
+    </div>
+
+    <div id="mens-categories" class="categories">
+        <h2>Мужская одежда</h2>
+        <ul>
+            <li><a href="#">Обувь</a></li>
+            <li><a href="#">Верхняя одежда</a></li>
+            <li><a href="#">Брюки</a></li>
+            <li><a href="#">Шорты</a></li>
+            <li><a href="#">Аксессуары</a></li>
+        </ul>
+        <a href="#" class="back-button" onclick="goBack()">← Назад</a>
+    </div>
+
+    <div id="womens-categories" class="categories">
+        <h2>Женская одежда</h2>
+        <ul>
+            <li><a href="#">Обувь</a></li>
+            <li><a href="#">Верхняя одежда</a></li>
+            <li><a href="#">Брюки</a></li>
+            <li><a href="#">Шорты</a></li>
+            <li><a href="#">Аксессуары</a></li>
+        </ul>
+        <a href="#" class="back-button" onclick="goBack()">← Назад</a>
+    </div>
+
+    <script>
+        function showCategories(gender) {
+            document.getElementById('main-screen').style.display = 'none';
+            if (gender === 'Мужское') {
+                document.getElementById('mens-categories').style.display = 'block';
+            } else {
+                document.getElementById('womens-categories').style.display = 'block';
+            }
+        }
+
+        function goBack() {
+            document.getElementById('mens-categories').style.display = 'none';
+            document.getElementById('womens-categories').style.display = 'none';
+            document.getElementById('main-screen').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
