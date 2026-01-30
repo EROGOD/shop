@@ -54,11 +54,14 @@
         .categories ul {
             list-style: none;
             padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .categories ul li {
-            display: inline-block;
-            margin: 0.5rem;
+            margin: 5px;
         }
 
         .categories ul li a {
@@ -68,6 +71,8 @@
             color: #333;
             border-radius: 5px;
             transition: background 0.3s;
+            display: block;
+            min-width: 120px;
         }
 
         .categories ul li a:hover {
@@ -87,6 +92,120 @@
         .back-button:hover {
             background-color: #555;
         }
+
+        /* Стили для карточки товара */
+        .products-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            width: 280px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Слайдер изображений */
+        .image-slider {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            border-radius: 5px;
+            border: 1px solid #eee;
+        }
+
+        .slider-images {
+            display: flex;
+            transition: transform 0.4s ease-in-out;
+            height: 100%;
+        }
+
+        .slider-images img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        /* Кнопки навигации */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: background 0.3s;
+            z-index: 10;
+        }
+
+        .slider-btn:hover {
+            background: rgba(0,0,0,0.8);
+        }
+
+        .slider-btn.prev {
+            left: 10px;
+        }
+
+        .slider-btn.next {
+            right: 10px;
+        }
+
+        /* Индикаторы точек */
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .slider-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .slider-dot.active {
+            background: #4caf50;
+        }
+
+        .product-card .price {
+            font-weight: bold;
+            color: #e53935;
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        .product-card .size {
+            color: #555;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
@@ -97,14 +216,13 @@
     <div id="main-screen" class="main-screen">
         <div class="main-menu">
             <button onclick="showCategories('Мужское')">Мужское</button>
-            <button onclick="showCategories('Женское')">Женское</button>
         </div>
     </div>
 
     <div id="mens-categories" class="categories">
         <h2>Мужская одежда</h2>
         <ul>
-            <li><a href="#">Обувь</a></li>
+            <li><a href="#" onclick="showShoesSection()">Обувь</a></li>
             <li><a href="#">Верхняя одежда</a></li>
             <li><a href="#">Брюки</a></li>
             <li><a href="#">Шорты</a></li>
@@ -113,16 +231,29 @@
         <a href="#" class="back-button" onclick="goBack()">← Назад</a>
     </div>
 
-    <div id="womens-categories" class="categories">
-        <h2>Женская одежда</h2>
-        <ul>
-            <li><a href="#">Обувь</a></li>
-            <li><a href="#">Верхняя одежда</a></li>
-            <li><a href="#">Брюки</a></li>
-            <li><a href="#">Шорты</a></li>
-            <li><a href="#">Аксессуары</a></li>
-        </ul>
-        <a href="#" class="back-button" onclick="goBack()">← Назад</a>
+    <!-- Новый раздел: Обувь -->
+    <div id="shoes-section" class="categories">
+        <h2>Мужская обувь</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="image-slider">
+                    <div class="slider-images">
+                        <img src="http://158.160.217.206:9001/api/v1/download-shared-object/aHR0cDovLzEyNy4wLjAuMTo5MDAwL3ByaWNlYm94L3Bob3RvXzIwMjYtMDEtMzBfMTQtMDQtMTQuanBnP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9S1pXT1E4MldENzE3RjI2VFFJWkMlMkYyMDI2MDEzMCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAxMzBUMTIzNjQ0WiZYLUFtei1FeHBpcmVzPTQzMTk5JlgtQW16LVNlY3VyaXR5LVRva2VuPWV5SmhiR2NpT2lKSVV6VXhNaUlzSW5SNWNDSTZJa3BYVkNKOS5leUpoWTJObGMzTkxaWGtpT2lKTFdsZFBVVGd5VjBRM01UZEdNalpVVVVsYVF5SXNJbVY0Y0NJNk1UYzJPVGd4TkRBNU9Td2ljR0Z5Wlc1MElqb2lZV1J0YVc0aWZRLnlaand1Wlk3RFRaNHNzZ3o3amtrNFJSVkpwN3lQUVNuOEo0R3c5eU1xd0lrQWpBRkp4RlI4a1c3eEFOZUlpYTNiRlNfR1NJZnpYdWFlSW5WQU8zZkx3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZ2ZXJzaW9uSWQ9bnVsbCZYLUFtei1TaWduYXR1cmU9N2ZhYTRiMzFlYTU4YTZjOGIzYmRlMTliMTdmYzM3ZTZjOTUwZGU1OWMxYjM1M2Y0YjZlOTljYzdlZDdlYmFhOA" alt="Кроссовки вид 1">
+                        <img src="https://ir.ozone.ru/s3/multimedia-y/6677593738.jpg" alt="Кроссовки вид 2">
+                    </div>
+                    <button class="slider-btn prev" onclick="changeSlide(this, -1)">❮</button>
+                    <button class="slider-btn next" onclick="changeSlide(this, 1)">❯</button>
+                    <div class="slider-dots">
+                        <span class="slider-dot active" onclick="goToSlide(this, 0)"></span>
+                        <span class="slider-dot" onclick="goToSlide(this, 1)"></span>
+                    </div>
+                </div>
+                <div class="price">100 рублей</div>
+                <div class="size">Размер: 42</div>
+            </div>
+            <!-- Здесь можно добавить больше карточек при необходимости -->
+        </div>
+        <a href="#" class="back-button" onclick="goBackToMensCategories()">← Назад к категориям</a>
     </div>
 
     <script>
@@ -130,15 +261,66 @@
             document.getElementById('main-screen').style.display = 'none';
             if (gender === 'Мужское') {
                 document.getElementById('mens-categories').style.display = 'block';
-            } else {
-                document.getElementById('womens-categories').style.display = 'block';
             }
         }
 
         function goBack() {
             document.getElementById('mens-categories').style.display = 'none';
-            document.getElementById('womens-categories').style.display = 'none';
+            document.getElementById('shoes-section').style.display = 'none';
             document.getElementById('main-screen').style.display = 'block';
+        }
+
+        function showShoesSection() {
+            document.getElementById('mens-categories').style.display = 'none';
+            document.getElementById('shoes-section').style.display = 'block';
+        }
+
+        function goBackToMensCategories() {
+            document.getElementById('shoes-section').style.display = 'none';
+            document.getElementById('mens-categories').style.display = 'block';
+        }
+
+        // Слайдер для изображений
+        function changeSlide(button, direction) {
+            const slider = button.closest('.image-slider');
+            const imagesContainer = slider.querySelector('.slider-images');
+            const dots = slider.querySelectorAll('.slider-dot');
+            const slideCount = imagesContainer.children.length;
+            
+            // Найти текущий слайд
+            let currentIndex = 0;
+            for (let i = 0; i < dots.length; i++) {
+                if (dots[i].classList.contains('active')) {
+                    currentIndex = i;
+                    break;
+                }
+            }
+            
+            // Вычислить новый индекс
+            let newIndex = currentIndex + direction;
+            if (newIndex < 0) newIndex = slideCount - 1;
+            if (newIndex >= slideCount) newIndex = 0;
+            
+            // Обновить слайд
+            updateSlider(imagesContainer, dots, newIndex);
+        }
+
+        function goToSlide(dot, index) {
+            const slider = dot.closest('.image-slider');
+            const imagesContainer = slider.querySelector('.slider-images');
+            const dots = slider.querySelectorAll('.slider-dot');
+            
+            updateSlider(imagesContainer, dots, index);
+        }
+
+        function updateSlider(imagesContainer, dots, index) {
+            // Сдвинуть изображения
+            imagesContainer.style.transform = `translateX(-${index * 100}%)`;
+            
+            // Обновить точки
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
         }
     </script>
 </body>
