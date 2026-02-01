@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Магазин одежды</title>
+    <title>PRICEBOX</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -213,11 +213,39 @@
             color: #555;
             font-size: 0.9rem;
         }
+
+       .close-btn {
+            background-color: #ff4444;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .close-btn:hover {
+            background-color: #cc0000;
+        }
     </style>
 </head>
 <body>
+    <button class="close-btn" onclick="closeWindow()">Назад в телеграмм</button>
+    
+    <script>
+        function closeWindow() {
+            if (window.opener) {
+                window.close();
+            } else {
+                alert('Эта страница не может быть закрыта программно. Пожалуйста, закройте вкладку вручную.');
+            }
+        }
+    </script>
     <header>
-        <h1>Магазин одежды</h1>
+        <h1>PRICEBOX</h1>
     </header>
 
     <div id="main-screen" class="main-screen">
@@ -230,10 +258,10 @@
         <h2>Мужская одежда</h2>
         <ul>
             <li><a href="#" onclick="showShoesSection()">Обувь</a></li>
-            <li><a href="#">Верхняя одежда</a></li>
-            <li><a href="#">Брюки</a></li>
-            <li><a href="#">Шорты</a></li>
-            <li><a href="#">Аксессуары</a></li>
+            <li><a href="#" onclick="showShoesSection()">Верхняя одежда</a></li>
+            <li><a href="#" onclick="showTrousersSection()">Брюки</a></li>
+            <li><a href="#" onclick="showShortsSection()">Шорты</a></li>
+            <li><a href="#" onclick="showAccessoriesSection()">Аксессуары</a></li>
         </ul>
         <a href="#" class="back-button" onclick="goBack()">← Назад</a>
     </div>
@@ -266,6 +294,117 @@
         <a href="#" class="back-button" onclick="goBackToMensCategories()">← Назад к категориям</a>
     </div>
 
+   <!-- Новый раздел: Верхняя одежда-->
+    <div id="wear-section" class="categories">
+        <h2>Верхняя одежда</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="image-slider">
+                    <div class="slider-images">
+                        <img src="https://images2.imgbox.com/26/d7/7DQ8efhU_o.jpg" alt="Кроссовки вид 1">
+                        <!-- <img src="https://ir.ozone.ru/s3/multimedia-y/6677593738.jpg" alt="Кроссовки вид 2">  -->
+                    </div>
+                    <button class="slider-btn prev" onclick="changeSlide(this, -1)">❮</button>
+                    <button class="slider-btn next" onclick="changeSlide(this, 1)">❯</button>
+                    <div class="slider-dots">
+                        <span class="slider-dot active" onclick="goToSlide(this, 0)"></span>
+                        <span class="slider-dot" onclick="goToSlide(this, 1)"></span>
+                    </div>
+                </div>
+                <div class="infoproduct">
+                  <a href="https://us.puma.com/us/en/pd/easy-rider-thrive--triumph-sneakers/403289?swatch=01">Кеды Easy Rider Thrive & Triumph </a> 
+                </div>
+                <div class="price">5300₽</div>
+                <!-- <div class="size">Размер: 42</div> -->
+            </div>
+            <!-- Здесь можно добавить больше карточек при необходимости -->
+        </div>
+        <a href="#" class="back-button" onclick="goBackToMensCategories()">← Назад к категориям</a>
+    </div>
+
+   <!-- Новый раздел: Брюки-->
+    <div id="wear-section" class="categories">
+        <h2>Брюки</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="image-slider">
+                    <div class="slider-images">
+                        <img src="https://images2.imgbox.com/26/d7/7DQ8efhU_o.jpg" alt="Кроссовки вид 1">
+                        <!-- <img src="https://ir.ozone.ru/s3/multimedia-y/6677593738.jpg" alt="Кроссовки вид 2">  -->
+                    </div>
+                    <button class="slider-btn prev" onclick="changeSlide(this, -1)">❮</button>
+                    <button class="slider-btn next" onclick="changeSlide(this, 1)">❯</button>
+                    <div class="slider-dots">
+                        <span class="slider-dot active" onclick="goToSlide(this, 0)"></span>
+                        <span class="slider-dot" onclick="goToSlide(this, 1)"></span>
+                    </div>
+                </div>
+                <div class="infoproduct">
+                  <a href="https://us.puma.com/us/en/pd/easy-rider-thrive--triumph-sneakers/403289?swatch=01">Кеды Easy Rider Thrive & Triumph </a> 
+                </div>
+                <div class="price">5300₽</div>
+                <!-- <div class="size">Размер: 42</div> -->
+            </div>
+            <!-- Здесь можно добавить больше карточек при необходимости -->
+        </div>
+        <a href="#" class="back-button" onclick="goBackToMensCategories()">← Назад к категориям</a>
+    </div>
+
+   <!-- Новый раздел: Шорты-->
+    <div id="wear-section" class="categories">
+        <h2>Шорты</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="image-slider">
+                    <div class="slider-images">
+                        <img src="https://images2.imgbox.com/26/d7/7DQ8efhU_o.jpg" alt="Кроссовки вид 1">
+                        <!-- <img src="https://ir.ozone.ru/s3/multimedia-y/6677593738.jpg" alt="Кроссовки вид 2">  -->
+                    </div>
+                    <button class="slider-btn prev" onclick="changeSlide(this, -1)">❮</button>
+                    <button class="slider-btn next" onclick="changeSlide(this, 1)">❯</button>
+                    <div class="slider-dots">
+                        <span class="slider-dot active" onclick="goToSlide(this, 0)"></span>
+                        <span class="slider-dot" onclick="goToSlide(this, 1)"></span>
+                    </div>
+                </div>
+                <div class="infoproduct">
+                  <a href="https://us.puma.com/us/en/pd/easy-rider-thrive--triumph-sneakers/403289?swatch=01">Кеды Easy Rider Thrive & Triumph </a> 
+                </div>
+                <div class="price">5300₽</div>
+                <!-- <div class="size">Размер: 42</div> -->
+            </div>
+            <!-- Здесь можно добавить больше карточек при необходимости -->
+        </div>
+        <a href="#" class="back-button" onclick="goBackToMensCategories()">← Назад к категориям</a>
+    </div>
+
+   <!-- Новый раздел: Аксессуары-->
+    <div id="wear-section" class="categories">
+        <h2>Аксессуары</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="image-slider">
+                    <div class="slider-images">
+                        <img src="https://images2.imgbox.com/26/d7/7DQ8efhU_o.jpg" alt="Кроссовки вид 1">
+                        <!-- <img src="https://ir.ozone.ru/s3/multimedia-y/6677593738.jpg" alt="Кроссовки вид 2">  -->
+                    </div>
+                    <button class="slider-btn prev" onclick="changeSlide(this, -1)">❮</button>
+                    <button class="slider-btn next" onclick="changeSlide(this, 1)">❯</button>
+                    <div class="slider-dots">
+                        <span class="slider-dot active" onclick="goToSlide(this, 0)"></span>
+                        <span class="slider-dot" onclick="goToSlide(this, 1)"></span>
+                    </div>
+                </div>
+                <div class="infoproduct">
+                  <a href="https://us.puma.com/us/en/pd/easy-rider-thrive--triumph-sneakers/403289?swatch=01">Кеды Easy Rider Thrive & Triumph </a> 
+                </div>
+                <div class="price">5300₽</div>
+                <!-- <div class="size">Размер: 42</div> -->
+            </div>
+            <!-- Здесь можно добавить больше карточек при необходимости -->
+        </div>
+        <a href="#" class="back-button" onclick="goBackToMensCategories()">← Назад к категориям</a>
+    </div>
     <script>
         function showCategories(gender) {
             document.getElementById('main-screen').style.display = 'none';
@@ -277,6 +416,7 @@
         function goBack() {
             document.getElementById('mens-categories').style.display = 'none';
             document.getElementById('shoes-section').style.display = 'none';
+            document.getElementById('wear-section').style.display = 'none';
             document.getElementById('main-screen').style.display = 'block';
         }
 
@@ -285,8 +425,30 @@
             document.getElementById('shoes-section').style.display = 'block';
         }
 
+        function showWearSection() {
+            document.getElementById('mens-categories').style.display = 'none';
+            document.getElementById('wear-section').style.display = 'block';
+        }
+
+        function showTrousersSection() {
+            document.getElementById('mens-categories').style.display = 'none';
+            document.getElementById('wear-section').style.display = 'block';
+        }
+
+        function showShortsSection() {
+            document.getElementById('mens-categories').style.display = 'none';
+            document.getElementById('wear-section').style.display = 'block';
+        }
+
+        function showAccessoriesSection() {
+            document.getElementById('mens-categories').style.display = 'none';
+            document.getElementById('wear-section').style.display = 'block';
+        }
+
+
         function goBackToMensCategories() {
             document.getElementById('shoes-section').style.display = 'none';
+            document.getElementById('wear-section').style.display = 'none';
             document.getElementById('mens-categories').style.display = 'block';
         }
 
