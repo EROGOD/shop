@@ -214,36 +214,9 @@
             font-size: 0.9rem;
         }
 
-       .close-btn {
-            background-color: #ff4444;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        .close-btn:hover {
-            background-color: #cc0000;
-        }
     </style>
 </head>
 <body>
-    <button class="close-btn" onclick="closeWindow()">Назад в телеграмм</button>
-    
-    <script>
-        function closeWindow() {
-            if (window.opener) {
-                window.close();
-            } else {
-                alert('Эта страница не может быть закрыта программно. Пожалуйста, закройте вкладку вручную.');
-            }
-        }
-    </script>
     <header>
         <h1>PRICEBOX</h1>
     </header>
